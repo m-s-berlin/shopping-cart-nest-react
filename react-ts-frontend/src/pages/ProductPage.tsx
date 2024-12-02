@@ -11,7 +11,7 @@ export default function ProductPage() {
     return products.filter((product) =>
       product.name.toLowerCase().includes(search.toLowerCase())
     );
-  }, [search]);
+  }, [search, products]);
 
   return (
     <>
