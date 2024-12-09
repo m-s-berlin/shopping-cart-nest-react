@@ -13,10 +13,11 @@ export class ProductService {
   async createProduct(data: Prisma.ProductCreateInput): Promise<Product> {
     return this.prisma.product.create({
       data,
+      include: { category: true },
     });
   }
 
   async deleteProduct(id: number): Promise<Product> {
-    return this.prisma.product.delete({ where: { id: id } });
+    return this.prisma.product.delete({ where: { id } });
   }
 }

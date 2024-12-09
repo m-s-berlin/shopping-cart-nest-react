@@ -9,28 +9,24 @@ import {
   } from '@nestjs/common';
   import { CartService } from './cart.service';
   
-  @Controller()
+  @Controller('/cart')
   export class CartController {
     constructor(
       private readonly cartServive: CartService,
     ) {}
   
-    @Get('/cart')
-    getCart() {
-      return this.cartServive.readCart();
+    @Get('/:id')
+    getCart(@Param('id') id: string) {
+      return this.cartServive.readCart(Number(id));
     }
   
-    @Post('/cart')
+    @Post('/')
     postCart(@Body() body: any) {
       return this.cartServive.createCart(body);
     }
 
-    @Put('/cart')
-    putCart(@Param('id') id: string, @Body() body: any) {
-      return this.cartServive.updateCart(Number(id), body);
-    }
   
-    @Delete('/cart/:id')
+    @Delete('/:id')
     deleteCart(@Param('id') id: string) {
       return this.cartServive.deleteCart(Number(id))
     }

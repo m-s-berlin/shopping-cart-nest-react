@@ -1,24 +1,35 @@
 @url = http://localhost:5000/
 
-get {{url}}products
+# Product Item Routes
+get {{url}}product
 
 ###
-get {{url}}products/5
+get {{url}}product/1
 
 ###
-post {{url}}products
+post {{url}}product
 Content-Type: application/json
  
-{"name": "Feuerschale"}
+{
+"name": "große Seifenschale",
+"categoryId": 3,
+"color": "blau",
+"price": 8,
+"image": "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTlpZDFlbWF1czQ5eGh5aXdhdm95ZHh2Y2p1azMwbnJmN202aXQ0ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Vj8muG9sIBayobsTcU/giphy.gif"
+}
 
 ###
-put {{url}}products/1
+put {{url}}product/1
 Content-Type: application/json
 
 {"name": "Schale"}
 
 ###
-delete {{url}}products/1
+delete {{url}}product/1
+
+# Cart Routes
+###
+get {{url}}cart/1
 
 ###
 post {{url}}cart
@@ -27,22 +38,24 @@ post {{url}}cart
 post {{url}}cartitem
 Content-Type: application/json
  
-{"name": "Feuerschale blau"}
+{"productId": 2, "quantity": 1, "cartId": 1}
 
+# Cart Item Routes
 ###
-put {{url}}cartitem/1
+put {{url}}cartitem/4
 Content-Type: application/json
 
-{"name": "Schale"}
+{"quantity": 2}
 
 ###
-delete {{url}}cartitem/1
+delete {{url}}cartitem/5
 
+# Category Item Routes
 ###
 post {{url}}category
 Content-Type: application/json
  
-{"name": "Feuerschale"}
+{"name": "Seifenschale"}
 
 ###
 get {{url}}category

@@ -6,13 +6,10 @@ import { CartItem, Prisma } from '@prisma/client';
 export class CartItemService {
   constructor(private prisma: PrismaService) {}
 
-  async readCartItems() {
-    return this.prisma.cartItem.findMany({});
-  }
-
   async createCartItem(data: Prisma.CartItemCreateInput): Promise<CartItem> {
     return this.prisma.cartItem.create({
       data,
+      include: { product: true },
     });
   }
 
@@ -24,6 +21,6 @@ export class CartItemService {
   }
 
   async deleteCartItem(id: number) {
-    return this.prisma.cartItem.delete({ where: { id: id } });
+    return this.prisma.cartItem.delete({ where: { id } });
   }
 }

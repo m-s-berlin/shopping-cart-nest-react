@@ -6,8 +6,11 @@ import { Cart, Prisma } from '@prisma/client';
 export class CartService {
   constructor(private prisma: PrismaService) {}
 
-  async readCart() {
-    return this.prisma.cart.findUnique;
+  async readCart(id: number) {
+    return this.prisma.cart.findUnique({
+      where: { id },
+      include: { cartItems: true },
+    });
   }
 
   async createCart(data: Prisma.CartCreateInput): Promise<Cart> {
@@ -16,14 +19,7 @@ export class CartService {
     });
   }
 
-  async updateCart(id: number, data: Prisma.CartUpdateInput) {
-    return this.prisma.cart.update({
-      where: { id: id },
-      data,
-    });
-  }
-
   async deleteCart(id: number) {
-    return this.prisma.cart.delete({ where: { id: id } });
+    return this.prisma.cart.delete({ where: { id } });
   }
 }

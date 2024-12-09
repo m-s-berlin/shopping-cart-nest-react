@@ -9,23 +9,23 @@ import {
   } from '@nestjs/common';
   import { ProductService } from './product.service';
   
-  @Controller()
+  @Controller('/product')
   export class ProductController {
     constructor(
       private readonly productServive: ProductService,
     ) {}
   
-    @Get('/product')
+    @Get('/')
     getProduct() {
       return this.productServive.readProducts();
     }
   
-    @Post('/product')
+    @Post('/')
     postProduct(@Body() body: any) {
       return this.productServive.createProduct(body);
     }
   
-    @Delete('/product/:id')
+    @Delete('/:id')
     deleteProduct(@Param('id') id: string) {
       return this.productServive.deleteProduct(Number(id))
     }
