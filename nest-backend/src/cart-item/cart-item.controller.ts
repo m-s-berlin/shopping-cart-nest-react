@@ -7,7 +7,7 @@ import {
     Post,
     Put,
   } from '@nestjs/common';
-  import { CartItemService } from './cartItem.service';
+  import { CartItemService } from './cart-item.service';
   
   @Controller()
   export class CartItemController {
