@@ -11,14 +11,12 @@ type ShoppingContextObj = {
   order: (cart: Cart) => void;
 };
 
-// Startkontext ohne Implementierungen aber er muss den richtigen Type haben
 export const ShoppingContext = React.createContext<ShoppingContextObj>(
-  {} as ShoppingContextObj        // Typescript benötigt ein valides ShoppingContext Startobjekt
+  {} as ShoppingContextObj
 );
 
 type Props = { children: ReactNode };
 
-// konkrete Implementierung der Context Logik und Daten
 const ShoppingContextProvider = (props: Props) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [cart, setCart] = useState<Cart>([]);

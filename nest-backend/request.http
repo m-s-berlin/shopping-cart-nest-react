@@ -1,1 +1,51 @@
-get http://localhost:5000/products
+@url = http://localhost:5000/
+
+get {{url}}products
+
+###
+get {{url}}products/5
+
+###
+post {{url}}products
+Content-Type: application/json
+ 
+{"name": "Feuerschale"}
+
+###
+put {{url}}products/1
+Content-Type: application/json
+
+{"name": "Schale"}
+
+###
+delete {{url}}products/1
+
+###
+post {{url}}cart
+
+###
+post {{url}}cartitem
+Content-Type: application/json
+ 
+{"name": "Feuerschale blau"}
+
+###
+put {{url}}cartitem/1
+Content-Type: application/json
+
+{"name": "Schale"}
+
+###
+delete {{url}}cartitem/1
+
+###
+post {{url}}category
+Content-Type: application/json
+ 
+{"name": "Feuerschale"}
+
+###
+get {{url}}category
+
+###
+delete {{url}}category/2
